@@ -1,3 +1,7 @@
+/* eslint-disable import/no-unresolved */
+/* eslint-disable import/extensions */
+/* eslint-disable react/prop-types */
+/* eslint-disable react/jsx-filename-extension */
 import React, { useState, useEffect } from 'react';
 import { getUser } from '../../api';
 import { Todo } from '../../types/Todo';
@@ -38,7 +42,6 @@ export const TodoModal: React.FC<Props> = ({
               {selectedTodo?.id}
             </div>
 
-            {/* eslint-disable-next-line jsx-a11y/control-has-associated-label */}
             <button
               type="button"
               className="delete"

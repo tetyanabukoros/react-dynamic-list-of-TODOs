@@ -1,8 +1,10 @@
-/* eslint-disable max-len */
+/* eslint-disable react/jsx-filename-extension */
+/* eslint-disable import/extensions */
+/* eslint-disable import/no-unresolved */
+
 import React, { useState, useEffect } from 'react';
 import 'bulma/css/bulma.css';
 import '@fortawesome/fontawesome-free/css/all.css';
-import { Todo } from './types/Todo';
 import './App.css';
 import { getTodos } from './api';
 
@@ -11,6 +13,7 @@ import { TodoFilter } from './components/TodoFilter';
 import { TodoModal } from './components/TodoModal';
 import { Loader } from './components/Loader';
 import { FilterType } from './types/FilterType';
+import { Todo } from './types/Todo';
 
 export const App: React.FC = () => {
   const [todos, setTodos] = useState<Todo[]>([]);
@@ -28,11 +31,11 @@ export const App: React.FC = () => {
   let visibleTodos = [...todos];
 
   switch (completeTodoFilter) {
-    case (FilterType.active):
+    case (FilterType.Active):
       visibleTodos = [...todos].filter(el => el.completed === false);
       break;
 
-    case FilterType.completed:
+    case FilterType.Completed:
       visibleTodos = [...todos].filter(el => el.completed === true);
       break;
 
@@ -40,9 +43,8 @@ export const App: React.FC = () => {
       visibleTodos = [...todos];
   }
 
-  const visibleFilteredTodos = (allTodos: Todo[]) => {
-    return allTodos.filter(allTodo => allTodo.title.toLowerCase().includes(prettyQuery));
-  };
+  const visibleFilteredTodos = (allTodos: Todo[]) => allTodos
+    .filter(allTodo => allTodo.title.toLowerCase().includes(prettyQuery));
 
   const preparedTodos = visibleFilteredTodos(visibleTodos);
 
